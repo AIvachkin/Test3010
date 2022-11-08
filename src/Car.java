@@ -9,7 +9,7 @@ public class Car {
 
 //    ввели лист прошлых владельцев
 
-    private ArrayList<String> owners = new ArrayList<>();
+    private final ArrayList<String> owners = new ArrayList<>();
 
 
     public String getManufacturer() {
@@ -52,4 +52,38 @@ public class Car {
     public ArrayList<String> getOwners() {
         return owners;
     }
+
+    private String testMethod() {
+        return "abc";
+    }
+
+    private String testMethod(String a) {
+        return "abc" + a;
+    }
+
+    public int testInt(int a) {
+        return a + 4;
+    }
+
+    public String getDataFromRemoteServer() throws Exception {
+
+        throw new Exception("error!!!");
+    }
+
+    public void printCar (Car car){
+        System.out.println(car);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", number='" + number + '\'' +
+                ", year=" + year +
+                ", owner='" + owner + '\'' +
+                ", owners=" + owners +
+                '}';
+    }
+
+
 }
