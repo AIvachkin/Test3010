@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 public class Massives {
 
+    static int strings;
+    static int columns;
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
 //        вводим в консоль кол-во строк и столбцов
 //        формируем двумерный массив и выводим его в консоль
@@ -11,8 +13,7 @@ public class Massives {
 //        выводим получившийся массив - программа завершает работу
 
         Scanner scanner = new Scanner(System.in);
-        int strings;
-        int columns;
+
         int indexOfString;
         int indexOfColumn;
         int volume;
@@ -25,12 +26,7 @@ public class Massives {
 
         int[][] massive = new int[strings][columns];
 
-        for (int i = 0; i < strings; i++) {
-            for (int j = 0; j < columns; j++) {
-                System.out.print(massive[i][j] + " ");
-            }
-            System.out.println();
-        }
+        printMassive(massive);
 
 
         System.out.println("Введите индекс строки");
@@ -40,12 +36,16 @@ public class Massives {
         System.out.println("Введите целочисленное значение для заданной ячейки");
         volume = scanner.nextInt();
 
-        massive[indexOfString][indexOfColumn] = volume;
+        if (indexOfString < strings && indexOfColumn < columns) {
+            massive[indexOfString][indexOfColumn] = volume;
+            System.out.println("Искомое значение: " + massive[indexOfString][indexOfColumn]);
+            printMassive(massive);
+        } else {
+            System.out.println("введена некорректная пара индексов - выходит за пределы массива");
+        }
+    }
 
-
-        System.out.println("Искомое значение: " + massive[indexOfString][indexOfColumn]);
-
-
+    private static void printMassive(int[][] massive) {
         for (int i = 0; i < strings; i++) {
             for (int j = 0; j < columns; j++) {
                 System.out.print(massive[i][j] + " ");
